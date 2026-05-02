@@ -75,7 +75,7 @@ function Register() {
     }
 
     try {
-      await axios.post("http://localhost:5000/api/auth/register", dataToSend);
+      await axios.post("https://talent-match-9rsc.onrender.com/api/auth/register", dataToSend);
       setSuccessMsg("Registration successful! Redirecting...");
       setTimeout(() => navigate("/login"), 2000);
     } catch (error) {

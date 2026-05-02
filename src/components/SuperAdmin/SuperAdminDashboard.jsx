@@ -22,8 +22,8 @@ const SuperAdminDashboard = () => {
 
   const fetchData = async () => {
     try {
-      const pendingRes = await axios.get("http://localhost:5000/api/admin/pending", config);
-      const approvedRes = await axios.get("http://localhost:5000/api/admin/admins", config);
+      const pendingRes = await axios.get("https://talent-match-9rsc.onrender.com/api/admin/pending", config);
+      const approvedRes = await axios.get("https://talent-match-9rsc.onrender.com/api/admin/admins", config);
 
       // FIXED: Both use .data.data to match backend standard
       setPendingAdmins(pendingRes.data.data || []);
@@ -43,7 +43,7 @@ const SuperAdminDashboard = () => {
 
   const approveAdmin = async (id) => {
     try {
-      await axios.post("http://localhost:5000/api/admin/approve", { userId: id, status: true }, config);
+      await axios.post("https://talent-match-9rsc.onrender.com/api/admin/approve", { userId: id, status: true }, config);
       fetchData();
     } catch (err) {
       alert("Approval failed: " + (err.response?.data?.message || "Server Error"));
@@ -53,7 +53,7 @@ const SuperAdminDashboard = () => {
   const rejectAdmin = async (id) => {
     try {
       if (!window.confirm("Reject and delete this request?")) return;
-      await axios.post("http://localhost:5000/api/admin/approve", { userId: id, status: false }, config);
+      await axios.post("https://talent-match-9rsc.onrender.com/api/admin/approve", { userId: id, status: false }, config);
       fetchData();
     } catch (err) {
       alert("Rejection failed");
@@ -63,7 +63,7 @@ const SuperAdminDashboard = () => {
   const deleteAdmin = async (id) => {
     if (!window.confirm("Delete this admin?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/admin/user/delete/${id}`, config);
+      await axios.delete(`https://talent-match-9rsc.onrender.com/api/admin/user/delete/${id}`, config);
       fetchData();
     } catch (err) {
       alert("Delete failed");
@@ -73,7 +73,7 @@ const SuperAdminDashboard = () => {
   const updateAdmin = async (e) => {
     e.preventDefault();
     try {
-      await axios.put("http://localhost:5000/api/admin/user/update", {
+      await axios.put("https://talent-match-9rsc.onrender.com/api/admin/user/update", {
         userId: selectedUser._id,
         ...selectedUser
       }, config);

@@ -106,10 +106,10 @@ function AdminDashboard() {
     try {
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
       const [studentsRes, resumesRes, analyzedResumesRes, interviewsRes] = await Promise.all([
-        axios.get("http://localhost:5000/api/admin/students", config),
-        axios.get("http://localhost:5000/api/admin/resumes/all", config),
-        axios.get("http://localhost:5000/api/admin/analyzed-resumes/all", config),
-        axios.get("http://localhost:5000/api/admin/interviews/all", config)
+        axios.get("https://talent-match-9rsc.onrender.com/api/admin/students", config),
+        axios.get("https://talent-match-9rsc.onrender.com/api/admin/resumes/all", config),
+        axios.get("https://talent-match-9rsc.onrender.com/api/admin/analyzed-resumes/all", config),
+        axios.get("https://talent-match-9rsc.onrender.com/api/admin/interviews/all", config)
       ]);
       setStudents(studentsRes.data.data || []);
       setResumes(resumesRes.data.data || []);
@@ -136,7 +136,7 @@ function AdminDashboard() {
   const handleAddStudentSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/auth/register", {
+      await axios.post("https://talent-match-9rsc.onrender.com/api/auth/register", {
         ...addFormData,
         role: "user",
         teacherCode: userInfo.user.teacherCode
@@ -154,7 +154,7 @@ function AdminDashboard() {
     if (!window.confirm("Are you sure you want to delete this student permanently?")) return;
     try {
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-      await axios.delete(`http://localhost:5000/api/admin/user/delete/${id}`, config);
+      await axios.delete(`https://talent-match-9rsc.onrender.com/api/admin/user/delete/${id}`, config);
       fetchAdminData();
       toast.success("Student deleted");
     } catch (error) {
@@ -171,7 +171,7 @@ function AdminDashboard() {
     e.preventDefault();
     try {
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-      await axios.put("http://localhost:5000/api/admin/user/update", {
+      await axios.put("https://talent-match-9rsc.onrender.com/api/admin/user/update", {
         userId: editingStudent,
         ...editFormData
       }, config);

@@ -32,7 +32,7 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post("http://localhost:5000/api/contact", formData);
+      await axios.post("https://talent-match-9rsc.onrender.com/api/contact", formData);
       setSubmitted(true);
       showToast.success("Message sent successfully!");
       setFormData({ name: "", email: "", message: "" });

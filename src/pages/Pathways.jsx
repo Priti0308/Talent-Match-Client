@@ -366,7 +366,7 @@ const Pathways = () => {
         answerSelected: ans.answerSelected
       }));
 
-      await axios.post('http://localhost:5000/api/pathway/save', {
+      await axios.post('https://talent-match-9rsc.onrender.com/api/pathway/save', {
         recommendedPathway: recPathwayTitle,
         quizAnswers: dbAnswers
       }, {

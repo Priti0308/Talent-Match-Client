@@ -14,7 +14,7 @@ function ResetPassword() {
     e.preventDefault();
     try {
       // Endpoint updated to match your auth flow
-      await axios.post(`http://localhost:5000/api/auth/reset-password/${token}`, { newPassword });
+      await axios.post(`https://talent-match-9rsc.onrender.com/api/auth/reset-password/${token}`, { newPassword });
       setMessage("Password updated successfully!");
       setTimeout(() => navigate("/login"), 2000);
     } catch (error) {

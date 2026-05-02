@@ -54,7 +54,7 @@ const showToast = {
 };
 
 // ─── API CONFIG ────────────────────────────────────────────────────────────────
-const API_BASE = "http://localhost:5000/api/interview";
+const API_BASE = "https://talent-match-9rsc.onrender.com/api/interview";
 
 const getToken = () => {
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));

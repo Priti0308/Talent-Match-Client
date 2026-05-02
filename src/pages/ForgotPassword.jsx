@@ -14,7 +14,7 @@ function ForgotPassword() {
 
     try {
       // 1. Request the reset link from the backend
-      const { data } = await axios.post("http://localhost:5000/api/auth/request-reset", { contact });
+      const { data } = await axios.post("https://talent-match-9rsc.onrender.com/api/auth/request-reset", { contact });
 
       if (data.success) {
         // 2. Format the message for WhatsApp

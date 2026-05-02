@@ -30,7 +30,7 @@ function AdminSettings({ userInfo, setUserInfo }) {
     setIsSubmitting(true);
     try {
       const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-      const res = await axios.put("http://localhost:5000/api/admin/user/update", {
+      const res = await axios.put("https://talent-match-9rsc.onrender.com/api/admin/user/update", {
         userId: userInfo.user._id,
         ...profileFormData
       }, config);
